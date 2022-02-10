@@ -1,31 +1,38 @@
 /* Masthan Swamy */
 
 var threeSum = function(nums) {
-    nums.sort();
-
-    console.log(nums);
     
-    let i=0, j=1, k=nums.length-1;
+    nums.sort((a, b)=>{
+        return(b-a);
+    });
+    
+    let i=0;
     let res = [];
-    while(j<k && i<k){
-        let sum = nums[i] + nums[j] + nums[k];
-        if(sum == 0){
-            res.push([nums[i], nums[j], nums[k]]);
-            while(nums[j] == nums[j+1])
+    while(i<nums.length-1){
+        let j = i+1;
+        let k = nums.length-1;
+        
+        while(j<k){
+            let sum = nums[i] + nums[j] + nums[k];
+            if(sum == 0){
+                res.push([nums[i], nums[j], nums[k]]);
                 j++;
-                k--;
-                
-        }else if(sum > 0){
-            k--;
-        }else if(sum < 0){
-            if(j==k-1)
-                i++;
+                while(nums[j-1] == nums[j])
+                    j++;
+            }else if(sum<0)
+            k--;// j++;
             else
-                j++;
+                j++;// j++;
         }
+        i++;
+        while(nums[i-1] == nums[i])
+            i++;
     }
-    return res;
+    
+    // console.log(res);
+    return(res);
+    
 };
 
-let arr = [3,0,-2,-1,1,2];
+let arr = [-1,0,1,2,-1,-4,-2,-3,3,0,4];
 console.log(threeSum(arr));
