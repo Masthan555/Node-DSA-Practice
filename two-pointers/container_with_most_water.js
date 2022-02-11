@@ -20,5 +20,5 @@ var maxArea = function(height) {
     
 };
 
-let heights = [1,8,6,2,5,4,8,3,7];
+let heights = [2,1,5,6,2,3];//[6, 2, 5, 4, 1, 6];//[1,8,6,2,5,4,8,3,7];
 console.log(maxArea(heights));

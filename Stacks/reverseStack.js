@@ -26,3 +26,5 @@ function reverseStack(stack){
 console.log("Peak: ", stack.peek());
 reverseStack(stack);
 console.log("Peak: ", stack.peek());
+
+module.exports = {insertAtBottom};
