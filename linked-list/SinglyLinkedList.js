@@ -8,9 +8,18 @@ class Node {
 }
 
 class LinkedList{
-    constructor(){
+    constructor(arr){
         this.head = null;
         this.length = 0;
+        if(arr){
+            for(let i in arr){
+                this.insertAtEnd(arr[i]);
+            }
+        }
+    }
+
+    isEmpty(){
+        return(this.length == 0);
     }
 
     insertAtStart(data){
@@ -138,4 +147,4 @@ console.log("---------------------");
 ll.removeAtIndex(3);
 ll.printList();
 
-module.exports = {LinkedList};
+module.exports = {Node, LinkedList};
