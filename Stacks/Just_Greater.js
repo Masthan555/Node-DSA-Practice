@@ -1,21 +1,9 @@
 /* Masthan Swamy */
 
-function justGreater(arr){
+let {Stack} = require("./implementation");
 
-    for(let i in arr){
-        let j = Number(i)+1;
-        while(arr[j]<arr[i]){
-            j++;
-        }
-        // console.log(arr[i], arr[j], i, j);
-        if(j>=arr.length)
-            arr[i] = -1;
-        else
-            arr[i] = arr[j];
-    }
+justGreater = (stack)=>{
 
-    return arr;
 }
 
-let arr = [2, 7, 3, 5, 4, 6, 8];
-console.log(justGreater(arr));
+let stack = new Stack();
