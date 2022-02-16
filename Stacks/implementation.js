@@ -1,9 +1,16 @@
 /* Masthan Swamy */
 
 class Stack{
-    constructor(){
+    constructor(arr){
         this.data = [];
         this.top = 0;
+    
+        if(arr){
+            for(let i in arr){
+                this.data[this.top] = arr[i];
+                this.top++;       
+            }
+        }
     }
 
     push(x){
