@@ -53,6 +53,43 @@ class LinkedList{
         }
     }
 
+    removeAtIndex(index){
+        if(index<0 || index>=this.length)   return;
+
+        if(index==0){
+            if(this.length == 1){
+                let temp = this.tail;
+                this.tail = null;
+                this.length--;
+                return temp.data;
+            }else{
+                let temp = this.tail.next;
+                this.tail.next = temp.next;
+                this.length--;
+                return temp.data;
+            }
+        }else{
+            let temp = this.tail.next;
+            let count = 1;
+            while(count<index){
+                temp = temp.next;
+                count++;               
+            }
+            if(index == this.length-1){
+                temp.next = this.tail.next;
+                this.tail = temp;
+                this.length--;
+                return temp.data;
+            }else{
+                let curr = temp.next;
+                temp.next = curr.next;
+                this.length--;
+                return curr.data;
+            }
+        }
+
+    }
+
     printList(){
         if(!this.isEmpty()){
             let temp = this.tail.next;;
@@ -63,3 +100,20 @@ class LinkedList{
         }
     }
 }
+
+let cll = new LinkedList();
+
+cll.insert(10);
+cll.insert(20);
+cll.insert(30, 0);
+cll.insert(40);
+cll.printList();
+console.log("--------------------------");
+cll.removeAtIndex(0);
+cll.printList();
+console.log("--------------------------");
+cll.removeAtIndex(1);
+cll.printList();
+console.log("--------------------------");
+cll.removeAtIndex(1);
+cll.printList();
