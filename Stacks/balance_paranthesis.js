@@ -2,25 +2,23 @@
 
 const {Stack} = require("./implementation");
 
-function balance(str){
+let balanceBraces = (str)=>{
     let stack = new Stack();
     for(let i in str){
-        if(str[i] == '('){
-            stack.push(0);
+        if(str[i] == "(" || str[i] == "[" || str[i] == "{"){
+            stack.push(str[i]);
         }else{
-            if(!stack.isEmpty())
-                stack.pop();
-            else
-                return false;
+            switch(str[i]){
+                case ')' : if(stack.peek() != '(')  return false; break;
+                case ']' : if(stack.peek() != '[')  return false; break;
+                case '}' : if(stack.peek() != '{')  return false; break;
+            }
+            stack.pop();
         }
     }
 
-    if(stack.isEmpty())
-        return true;
-    else
-        return false;
-    
+    return stack.isEmpty();
 }
 
-let str = "()(";//")())()((()))(";
-console.log(balance(str));
+let str = "()[]{}";
+console.log(balanceBraces(str));
