@@ -1,30 +1,22 @@
 /* Masthan Swamy */
 
-let {stack} = require("./implementation");
+let {Stack} = require("./implementation");
+let {insertAtBottom} = require("./insertAtBottom");
 
-function insertAtBottom(stack, val){
-    if(stack.isEmpty()){
-        stack.push(val);
+let reverseStack = (stack)=>{
+    if(stack.isEmpty())
         return;
-    }
-
-    let top = stack.pop();
-    insertAtBottom(stack, val);
-    stack.push(top);
-}
-
-function reverseStack(stack){
-    if(stack.isEmpty()){
-        return;
-    }
 
     let val = stack.pop();
     reverseStack(stack);
     insertAtBottom(stack, val);
 }
 
-console.log("Peak: ", stack.peek());
+let stack = new Stack();
+stack.push(10);
+stack.push(20);
+stack.push(30);
+stack.push(40);
 reverseStack(stack);
-console.log("Peak: ", stack.peek());
-
-module.exports = {insertAtBottom};
+// console.log("PEEK: ", stack.peek());
+stack.print();

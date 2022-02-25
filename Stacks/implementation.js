@@ -37,6 +37,11 @@ class Stack{
         }
         return(this.data[this.top-1]);
     }
+    print(){
+        while(!this.isEmpty()){
+            console.log(this.pop());
+        }
+    }
 }
 
 const stack = new Stack();

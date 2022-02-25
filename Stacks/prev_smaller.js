@@ -2,10 +2,9 @@
 
 const {Stack} = require("./implementation");
 
-let nextSmaller = (arr)=>{
+let prevSmaller = (arr)=>{
     let stack = new Stack();
-
-    for(let i in arr){
+    for(let i=arr.length-1; i>=0; i--){
         while(arr[i]<arr[stack.peek()] && !stack.isEmpty()){
             arr[stack.pop()] = arr[i];
         }
@@ -19,7 +18,7 @@ let nextSmaller = (arr)=>{
     return arr;
 }
 
-let arr = [2, 7, 3, 5, 4, 6, 8, 7, 1]; 
+let arr = [2, 7, 3, 5, 4, 6, 8, 7, 1];
+// console.log(prevSmaller(arr)); // [-1, 2, 2, 3, 3, 4, 6, 6, -1]
 
-// console.log(nextSmaller(arr)); // [0, 3, 0, 4, 0, 0, 7, 0, 0]
-module.exports = {nextSmaller};
+module.exports = {prevSmaller};
