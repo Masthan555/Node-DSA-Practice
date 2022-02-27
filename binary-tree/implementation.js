@@ -9,9 +9,7 @@ class Node{
 }
 
 preOrder = (root)=>{
-    if(root == null){
-        return;
-    }
+    if(root == null) return;
 
     console.log(root.data);
     preOrder(root.left);
@@ -27,13 +25,28 @@ inOrder = (root)=>{
 }
 
 postOrder = (root)=>{
-    if(root == null) return -1;
+    if(root == null) return;
     
     postOrder(root.left);
     postOrder(root.right);
     console.log(root.data);
 }
 
+height = (root)=>{
+    if(!root) return -1;
+
+    let left = height(root.left);
+    let right = height(root.right);
+
+    return(Math.max(left, right)+1);
+}
+
+maximum = (root)=>{
+    if(!root) return 0;
+    return(Math.max(root.data, maximum(root.left), maximum(root.right)));
+}
+
+/*
 BFSTraversal = (root)=>{
     let arr = [];
     arr.push(root);
@@ -62,7 +75,7 @@ maxElement1 = (root)=>{
     if(!root) return 0;
 
     return(Math.max(maxElement1(root.left), maxElement1(root.right), root.data));
-}
+}*/
 
 let root = new Node(10);
 root.left = new Node(20);
@@ -79,8 +92,9 @@ postOrder(root);
 console.log("----------------");
 console.log(height(root));
 console.log("----------------");
-console.log(maxElement(root));
-console.log(maxElement1(root));
-console.log("----------------");
-console.log("BFS Traversal");
-BFSTraversal(root);
+console.log(maximum(root));
+// console.log(maxElement(root));
+// console.log(maxElement1(root));
+// console.log("----------------");
+// console.log("BFS Traversal");
+// BFSTraversal(root);
