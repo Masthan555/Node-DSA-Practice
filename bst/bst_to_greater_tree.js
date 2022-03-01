@@ -8,33 +8,23 @@ class Node{
     }
 }
 
-greaterTree = (root, data)=>{
-    if(root == null) return;
-
-    if(root.left == null && root.right == null){
-        return root.data;
-    }
-
-    if(root.left && root.data < root.left.data){
-        root.data += greaterTree(root.left); 
-        greaterTree(root.right);
-    }else if(root.right && root.data < root.right.data){
-        root.data += greaterTree(root.right);
-        greaterTree(root.left);
-    }else{
-        if(root.data < data){
-            root.data += data;
-        }
-    }
-
-    return root.data;
+// First we will get sum from Right subtree and then update root then update left subtree from root
+// Here, we will do Reverse In-Order Traversal
+let sum = 0;
+greaterTree = (root)=>{
+    if(!root) return 0;
+    
+    greaterTree(root.right);
+    sum += root.data;
+    root.data = sum;
+    greaterTree(root.left);
 }
 
 inOrder = (root)=>{
     if(root == null) return;
 
     inOrder(root.left);
-    console.log(root.data);
+    process.stdout.write(root.data + " ");
     inOrder(root.right);
 }
 
