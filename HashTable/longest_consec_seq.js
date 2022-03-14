@@ -3,8 +3,8 @@
 let consecSequence = (arr)=>{
     let hash = {};
     let start = Number.MAX_SAFE_INTEGER;
-    for(let i=0; i<=arr.length; i++){
-        if(hash[arr[i-1]] && arr[i-1]<start){
+    for(let i=0; i<arr.length; i++){
+        if(hash[arr[i]-1] && (arr[i]-1)<start){
             start = arr[i-1];
         }
         hash[arr[i]] = 1;
