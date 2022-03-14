@@ -19,20 +19,17 @@ let upper_bound = (arr, val)=>{
 }
 
 let notTri = (arr)=>{
-    let ans = 0;
+    arr.sort((a, b)=>{ return(a-b); });
     let n = arr.length;
+    let ans = 0;
     for(let i=0; i<n; i++){
-        for(let j=i+1; j<arr.length-1; j++){
-            let sum = arr[i] + arr[j];
-            ans += n - upper_bound(arr, sum);
+        for(let j=i+1; j<n; j++){
+            let sum_ = arr[i] + arr[j];
+            ans = ans + (n - upper_bound(arr, sum_));
         }
     }
-    arr.sort((a, b)=>{
-        return(a-b);
-    });
-
     return ans;
 }
 
-let arr = [4, 2 ,10];
+let arr = [4, 2 ,9, 6];
 console.log(notTri(arr));
